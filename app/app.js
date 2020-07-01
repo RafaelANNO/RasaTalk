@@ -54,7 +54,7 @@ const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
 axios.interceptors.response.use(
-  response => {
+  (response) => {
     if (response.status === 275) {
       const message = response.data.statusMessage
         ? response.data.statusMessage
@@ -70,7 +70,7 @@ axios.interceptors.response.use(
 
     return response;
   },
-  error => {
+  (error) => {
     // Do something with response error
 
     switch (error.response.status) {
@@ -102,7 +102,7 @@ axios.interceptors.response.use(
   },
 );
 
-const render = messages => {
+const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
@@ -127,7 +127,7 @@ if (module.hot) {
 
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {
-  new Promise(resolve => {
+  new Promise((resolve) => {
     resolve(import('intl'));
   })
     .then(() =>
@@ -137,7 +137,7 @@ if (!window.Intl) {
       ]),
     )
     .then(() => render(translationMessages))
-    .catch(err => {
+    .catch((err) => {
       throw err;
     });
 } else {

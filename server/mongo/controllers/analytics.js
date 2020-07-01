@@ -35,10 +35,10 @@ function getDashboard(req, res) {
       users,
     };
   }).then(
-    value => {
+    (value) => {
       res.send(value);
     },
-    err => {
+    (err) => {
       debug(err.stack);
     },
   );
@@ -51,13 +51,13 @@ function getRasaStats(req, res) {
     } = yield axios.get(`${process.env.RASASERVER}/status`);
     return Object.keys(available_projects).length;
   })
-    .then(value => {
+    .then((value) => {
       res.send({
         online: true,
         projects: value,
       });
     })
-    .catch(error => {
+    .catch((error) => {
       debug('Rasa Error %O', error);
       res.send({
         online: false,

@@ -111,9 +111,9 @@ class SlotFiller {
    * @param newEntities
    */
   refillSlot(newEntities, node) {
-    Object.keys(this.session.entities.context).forEach(key => {
+    Object.keys(this.session.entities.context).forEach((key) => {
       if (key === node.condition) {
-        newEntities.entities.forEach(singleEntity => {
+        newEntities.entities.forEach((singleEntity) => {
           this.session.entities.context[key][singleEntity.entity] =
             singleEntity.value;
         });
