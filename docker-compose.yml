@@ -26,6 +26,8 @@ services:
     container_name: "rasa"
     image: rasa/rasa_nlu:stable-full
     restart: always
+    volumes: 
+      - "5001:5001"
     volumes:
       - ./data/rasa/projects:/app/projects
       - ./data/rasa/logs:/app/logs
